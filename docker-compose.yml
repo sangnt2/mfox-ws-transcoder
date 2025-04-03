@@ -1,0 +1,23 @@
+version: '3'
+services:
+  websocket-server:
+    container_name: metafox-transcoder-ws
+    restart: always
+    tty: true
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${WS_PORT}:3000
+    networks:
+      - metafox-transcoder-networks
+
+networks:
+  metafox-transcoder-networks:
+    driver: bridge
