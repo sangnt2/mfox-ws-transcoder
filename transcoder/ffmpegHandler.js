@@ -12,7 +12,7 @@ require('dotenv').config();
 const DEBUG_MODE = process.env.NODE_ENV === 'development';
 
 class FFmpegHandler extends StreamingHandler {
-    constructor(streamKey, ws, quality = 'workable') {
+    constructor(streamKey, ws, quality = 'good') {
         super(streamKey);
         this.quality = quality;
         this.ffmpegProcess = null;
@@ -92,7 +92,7 @@ class FFmpegHandler extends StreamingHandler {
     }
 
     restart() {
-        console.log('Restarting FFMPEG process');
+        console.log('Restarting FFmpeg process');
         this.stop().then(() => this.start());
     }
 }

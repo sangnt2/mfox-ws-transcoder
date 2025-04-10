@@ -11,5 +11,8 @@
     "dotenv": "^16.4.7",
     "jsonwebtoken": "^9.0.2",
     "ws": "^8.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

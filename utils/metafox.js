@@ -11,7 +11,7 @@ async function endLiveByStreamKey(streamKey, bearerToken) {
     };
 
     try {
-        const liveVideoResponse = await axios.get(`${MFOX_BASE_API_URL}/live-video/get-live-by-key?stream_key=${streamKey}`, {headers: headers});
+        const liveVideoResponse = await axios.get(`${MFOX_BASE_API_URL}/live-video/live-video-by-key?stream_key=${streamKey}`, {headers: headers});
         const liveVideoId = parseInt(liveVideoResponse.data.data.id);
 
         if (liveVideoId) {

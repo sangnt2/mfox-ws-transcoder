@@ -196,7 +196,11 @@ class Client {
             if (!this.validatedStreamKey) {
                 const streamKey = data.params[0];
 
-                await this.validateStreamkey(streamKey);
+                const isValid = await this.validateStreamkey(streamKey);
+
+                if (!isValid) {
+                    return this.sendError('INVALID_STREAM_KEY');
+                }
 
                 this.sendResult('result/streaming', [{}]);
 
@@ -228,6 +232,8 @@ class Client {
     async validateStreamkey(streamKey) {
         const isValid = await validateUserStreamKey(streamKey, this.bearerToken);
         if (!isValid) return this.sendResult('result/streaming', { error: 'INVALID_STREAM_KEY', msg: 'invalid_stream_key' });
+
+        return isValid;
     }
 
     processStreamData(data) {

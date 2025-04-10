@@ -8,12 +8,7 @@ RUN apt-get update && apt-get install -y ffmpeg
 
 FROM base AS dependencies
 COPY package*.json ./
-RUN npm install --save \
-    ws \
-    dotenv \
-    ajv \
-    jsonwebtoken \
-    axios 
+RUN npm install
 
 FROM base AS builder
 COPY --from=dependencies /usr/src/app/node_modules ./node_modules
