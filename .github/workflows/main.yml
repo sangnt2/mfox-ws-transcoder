@@ -67,4 +67,4 @@ jobs:
           push: true
           target: builder
           tags: |
-            sangnt2/mfox-ws-transcoder:lastest
+            sangnt2/mfox-ws-transcoder:latest
